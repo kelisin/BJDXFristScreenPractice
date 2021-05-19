@@ -1,0 +1,561 @@
+html, body, div, span, p, ul, li, img, a, h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    padding: 0;
+}
+ul, li{
+    list-style: none outside none;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+}
+
+i, em, b, strong {
+    font-style: normal;
+    font-weight: normal;
+}
+
+img{
+    vertical-align: top;
+    border: 0;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+}
+.home {
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; */
+    overflow: hidden;
+}
+body {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.6;
+    min-width: 320px;
+    font-family: 微软雅黑,黑体;
+    margin: auto;
+}
+.block {
+    width: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+/****************  一屏设计  ********************/
+/* body_home  大整体 */
+
+.body_home{
+    height: 100%;
+    background: #000;
+}
+
+.header .block {
+    position: relative;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+/****************  header S  ********************/
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    /* 添加影藏动画 */
+    transition: all 0.7s ease-out 0s;
+    transform: translateY(-100%);
+    opacity: 0;
+}
+/*  添加影藏动画  */
+.body_home.showdiv .header{
+    opacity: 1;
+    transform: none;
+}
+/* d1 */
+.header .d1{
+    height: 45px;
+    background: #94070a;
+    color: #d39797;
+    line-height: 45px;
+    font-size: 14px;
+    overflow: hidden;
+    letter-spacing: -999px;
+}
+.header .d1 a {
+    display: inline-block;
+    line-height: 1;
+    font-size: 14px;
+    letter-spacing: 0;
+}
+.header .d1 a:before {
+    content: "";
+    display: block;
+    margin-bottom: 5px;
+    border-top: 2px solid #d39797;
+    transition: all 0.1s ease-out 0s;
+    transform: scaleX(0);
+}
+.header .d1 a:hover:before{
+    transform: scaleX(1);
+    border-color: #fff;
+}
+.header .d1 i {
+    margin: 0 18px;
+    font-size: 12px;
+}
+
+.header .d1 .nav_r a {
+    margin-left: 30px;
+}
+
+/* d2 */
+.d2 .block{
+    margin: 0 40px;
+    padding: 0;
+}
+
+.d2 {
+    height: 85px;
+    /* background: gold; */
+    color: #fff;
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0));
+}
+/* logo */
+
+.d2 .logo{
+    width: 200px;
+    height: 100%;
+}
+.d2 .logo a{
+    display: block;
+    height: 100%;
+    font-size: 0;
+}
+.d2 .logo a img{
+    width: 100%;
+    max-height: 65%;
+    vertical-align: middle;
+}
+.header .logo a:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/* nav_main */
+.d2 .nav_main{
+    text-align: center;
+    font-size: 0;
+}
+.d2 .nav_main a{
+    margin: 0 20px;
+    font-size: 18px;
+    display: inline-block;
+    /* 这和下面的两个display挺有意思的 */
+    position: relative;
+}
+.d2 .nav_main a::after{
+    content: "";
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+    border-bottom:  2px solid #94070a;
+    transform: scaleX(0);
+    transition: all 0.2s ease-out 0s;
+}
+.d2 .nav_main a::before{
+    content: "";
+    display: block;
+    height: 26px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-left:  2px solid #94070a;
+    transform: scaleY(0);
+    transition: all 0.2s ease-out 0s;
+    transform-origin: center top;
+}
+.d2 .nav_main .hover::before, .d2 .nav_main .hover::after{
+    transform: none;
+}
+
+
+
+/* tools */
+.d2 .tools{
+    display: flex;
+    font-size: 16px;
+}
+.d2 .tools .a{
+    width: 34px;
+    height: 34px;
+    border: 1px solid #fff;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+.d2 .tools a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 34px;
+}
+/* .header .tools .sc a{
+    font-size: 20px;
+    line-height: 34px;
+} */
+
+/***** 二级导航栏 nav_child ******/
+
+
+.nav_child .item{
+    width: 900px;
+    padding: 40px;
+    position: absolute;
+    top: 100%;
+    border-top: 2px solid #94070a;
+    background: #fff url(../img/png96.png) center bottom no-repeat;
+    background-size: contain;
+
+    display: flex;
+
+    opacity: 0;
+    visibility: hidden;
+}
+.nav_child .item.s{
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav_child .item .l{
+    width: 45%;
+    display: flex;
+}
+.nav_child .item .l .pic{
+    width: 142px;
+}
+.nav_child .item .l .pic img{
+    width: 100%;
+}
+.nav_child .item .l .text{
+    color: #94070a;
+    font-size: 16px;
+    line-height: 2.2;
+    padding-left: 30px;
+    flex: 1;
+}
+.nav_child .item .r{
+    width: 55%;
+    font-size: 0;
+    /* 消除字体间默认间距 */
+}
+.nav_child .item .r a{
+    color: #000;
+    width: 33.33%;
+    font-size: 18px;
+    display: inline-block;
+    margin-top: 10px;
+}
+/****************  header E  ********************/
+
+/****************  bb S  ********************/
+.body_home .bb{
+    color: #94070a;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    cursor: pointer;
+    padding: 10px 10px;
+
+    opacity: 0;
+    animation: bb 2s linear 0s infinite;
+}
+.body_home .bb:hover{
+    color: #fff;
+    animation-play-state: paused;
+}
+/* 动画关键帧 */
+@keyframes bb {
+    0%{
+        transform: translate(-50%,0);
+        opacity: 0;
+    }
+    20%{
+        transform: translate(-50%,3px);
+        opacity: 1;
+    }
+    40%{
+        transform: translate(-50%,6px);
+        opacity: 1;
+    }
+    60%{
+        transform: translate(-50%,9px);
+        opacity: 1;
+    }
+    90%{
+        transform: translate(-50%,12px);
+        opacity: 0;
+    }
+    100%{
+        transform: translate(-50%,12px);
+        opacity: 0;
+    }
+}
+
+
+/****************  bb E  ********************/
+
+
+/****************  banner S  ********************/
+.banner{
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: relative;
+    /* top: 45px; */
+}
+.banner .swiper-container{
+    width: 100%;
+    height: 100%;
+}
+.banner .swiper-slide li {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    display: inline-block;
+
+    /* 轮播图片背景定位 覆盖类型cover background-size */
+    background-size: cover;
+
+    vertical-align: middle;  
+}
+.banner .swiper-slide li img{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+
+
+    /* img图片的定位方式 覆盖cover object-fit */
+    object-fit: cover;
+}
+.banner h2{
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    right: 380px;
+    bottom: 50px;
+    line-height: 1;
+    padding-left: 40px;
+    /* z-index: 2; */
+}
+
+.banner .fz30{
+    font-size: 24px;
+    color: #fff;
+    position: absolute;
+    left: 0;
+    right: 380px;
+    bottom: 50px;
+    line-height: 1;
+    padding-left: 40px;
+    /* z-index: 2; */
+}
+
+/* .banner .swiper1 li>.a1{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+} */
+
+
+/* 分页器 pagination */
+.banner .navg {
+    width: auto;
+    height: auto;
+
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    padding-right: 100px;
+
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1;
+
+    z-index: 3;
+    
+
+}
+
+.banner .navg li {
+    /* swiper的css定义了.swiper-pagination-custom{width:100%} 而且还是加在最外层的ul.swiper-pagination上面 */
+    width: auto;
+
+    margin: 0 10px;
+    font-family: Arial;
+    cursor: pointer;
+    vertical-align: middle;
+    display: inline-block;
+}
+.banner .navg .swiper-pagination-custom.active {
+    font-size: 22px;
+}
+.banner .navg .swiper-pagination-custom::after {
+    content: "";
+    width: 0px;
+    display: inline-block;
+    vertical-align: middle;
+    border-top: 1px #fff solid;
+    margin-left: 5px;
+
+    transition: all 0.5s ease-out 0s;
+}
+.banner .navg .swiper-pagination-custom.active::after {
+    width: 50px;
+}
+/****************  banner E  ********************/
+
+/****************  rr S ************************/
+.rr{
+    width: 82px;
+    height: 170px;
+    position: fixed;
+    top: 50%;
+    right: 0;
+    margin-top: -85px;
+    background: url(../img/png27.png) center center no-repeat;
+
+    cursor: pointer;
+    z-index: 2;
+
+    opacity: 0;
+    
+    transform-origin: right center;
+    transform: scale(0);
+}
+.rr::before{
+    content: "";
+    width: 97px;
+    height: 91px;
+    background: url(../img/png21.png) center center no-repeat;
+    position: absolute;
+    top: 10px;
+    left: -20px;
+
+    opacity: 0;
+    transform: scale(1.6);
+    transition: all 1.5s ease-out 1.8s;
+}
+.rr::after{
+    content: "";
+    width: 78px;
+    height: 88px;
+    background: url(../img/png22.png) center center no-repeat;
+    position: absolute;
+    top: 80px;
+    left: 15px;
+
+    opacity: 0;
+    transform: scale(1.6);
+    transition: all 1.5s ease-out 2.6s;
+}
+.rr i{
+    width: 36px;
+    height: 100%;
+    display: block;
+    background: url(../img/png23.png) center center no-repeat;
+    z-index: 2;
+    position: relative;
+
+    margin-left: 20px;
+    opacity: 0;
+}
+
+.rr.showdiv{
+    transition: all 1s ease-out 0.5s;
+    opacity: 1;
+    transform: none;
+}
+.rr.showdiv:before,.rr.showdiv:after{
+    content: "";
+    opacity: 1;
+    transform: none;
+}
+.rr.rr.showdiv i{
+    opacity: 1;
+    margin-left: 40px;
+    transition: all 1s ease-out 4.5s;
+
+}
+/****************  rr E ************************/
+
+/****************  body_r S  *******************/
+.body_r {
+    position: fixed;
+    /* left: 100%; */
+    left: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    overflow: hidden;
+    transition: left 1.3s cubic-bezier(0.5,0,0.2,1) 0s;
+    z-index: 1;
+    overflow: hidden;
+
+    background: gold;
+}
+.body_r.showdiv{
+    left:0;
+}
+
+/********* ll S *********/
+.body_r .ll{
+    opacity: 1;
+    position: absolute;
+    width: 20px;
+    left: 0;
+    top: 50%;
+
+    background: url(../img/png13.png) right 30px center no-repeat;
+    background-size: cover;
+    
+    padding-left: 40px;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.2;
+    
+    transition: all .5s ease-out 0s;
+    cursor: pointer;
+}
+.body_r .ll:hover{
+    padding-left: 50px;
+}
+/********* ll E *********/
+
+/****************  body_r E  *******************/
+
+
+
+/***********************  scroll部分 ************************/
+/* body_b */

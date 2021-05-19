@@ -1,0 +1,23 @@
+{
+  "id": "2541207",
+  "name": "balabalabala",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "21500984",
+      "name": "下拉图标",
+      "font_class": "xialatubiao",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "21417222",
+      "name": "搜索",
+      "font_class": "icon-search",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    }
+  ]
+}
