@@ -21,8 +21,7 @@ img{
     border: 0;
 }
 
-html, body{
-    width: 100%;
+.home body{
     height: 100%;
 }
 .home {
@@ -32,6 +31,7 @@ html, body{
     right: 0;
     bottom: 0; */
     overflow: hidden;
+    height: 100%;
 }
 body {
     font-size: 14px;
@@ -49,12 +49,10 @@ body {
 }
 /****************  一屏设计  ********************/
 /* body_home  大整体 */
-
 .body_home{
     height: 100%;
     background: #000;
 }
-
 .header .block {
     position: relative;
     height: 100%;
@@ -68,7 +66,7 @@ body {
 
 /****************  header S  ********************/
 
-.header{
+.body_home .header{
     position: fixed;
     top: 0;
     left: 0;
@@ -80,7 +78,7 @@ body {
     opacity: 0;
 }
 /*  添加影藏动画  */
-.body_home.showdiv .header{
+.body_home.s.showdiv .header{
     opacity: 1;
     transform: none;
 }
@@ -272,8 +270,12 @@ body {
 }
 /****************  header E  ********************/
 
-/****************  bb S  ********************/
-.body_home .bb{
+/****************  bb 下方箭头 S  ********************/
+.body_home .bb {
+    /* display: block; */
+    opacity: 0;
+}
+.body_home.s .bb{
     color: #94070a;
     font-weight: bold;
     position: absolute;
@@ -284,7 +286,8 @@ body {
     cursor: pointer;
     padding: 10px 10px;
 
-    opacity: 0;
+    /* display: none; */
+    opacity: 1;
     animation: bb 2s linear 0s infinite;
 }
 .body_home .bb:hover{
@@ -327,7 +330,7 @@ body {
 .banner{
     width: 100%;
     height: 100%;
-    background: black;
+    background: #fff;
     position: relative;
     /* top: 45px; */
 }
@@ -555,7 +558,253 @@ body {
 
 /****************  body_r E  *******************/
 
+/************************** body_b 下滑后部分*************************************/
+/* body_b */
+
+
+/* 下滑动画的优化暂时不想写 */
+
+
+.body_b.showdiv{
+    top: 0;
+    /* 之前整的display:block也有用，就是自带的滚条占位置，会把我的右侧按钮往左边挤，下滑时很丑 */
+}
+.body_b{
+    position: fixed;
+    /* 永远的神，所以我要整个overflow:auto;来弥补消失的滚条 */
+    left: 0;
+    right: 0;
+    top: 100%;
+    bottom: 0;
+    /* transition: top .3s linear 0s; */
+    transition: top 0.7s cubic-bezier(0.5,0,0.2,1) 0s;
+
+    
+    height: 100%;
+    /* 这高度把我整的晕了 */
+    overflow: auto;
+}
+
+
+/****************  header2 S  ********************/
+.header2 .block {
+    position: relative;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -ms-flex-align: center;
+    align-items: center;
+}
+.body_b .header2{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    /* 添加影藏动画 */
+    transition: all 0.7s ease-out 0s;
+    transform: translateY(-100%);
+    opacity: 0;
+}
+/*  添加影藏动画  */
+.body_b.showdiv .header2{
+    opacity: 1;
+    transform: none;
+}
+/* d1 */
+.header2 .d1{
+    height: 45px;
+    background: #94070a;
+    color: #d39797;
+    line-height: 45px;
+    font-size: 14px;
+    overflow: hidden;
+    letter-spacing: -999px;
+}
+.header2 .d1 a {
+    display: inline-block;
+    line-height: 1;
+    font-size: 14px;
+    letter-spacing: 0;
+}
+.header2 .d1 a:before {
+    content: "";
+    display: block;
+    margin-bottom: 5px;
+    border-top: 2px solid #d39797;
+    transition: all 0.1s ease-out 0s;
+    transform: scaleX(0);
+}
+.header2 .d1 a:hover:before{
+    transform: scaleX(1);
+    border-color: #fff;
+}
+.header2 .d1 i {
+    margin: 0 18px;
+    font-size: 12px;
+}
+
+.header2 .d1 .nav_r a {
+    margin-left: 30px;
+}
+
+/* d2 */
+.header2 .d2 .block{
+    margin: 0 40px;
+    padding: 0;
+}
+
+.header2 .d2 {
+    height: 85px;
+    /* background: gold; */
+    color: #000;
+    background: #fff;
+    /* background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0)); */
+}
+/* logo */
+
+.header2 .d2 .logo{
+    width: 200px;
+    height: 100%;
+}
+.header2 .d2 .logo a{
+    display: block;
+    height: 100%;
+    font-size: 0;
+}
+.header2 .d2 .logo a img{
+    width: 100%;
+    max-height: 65%;
+    vertical-align: middle;
+}
+.header2 .logo a:after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/* nav_main */
+.d2 .nav_main{
+    text-align: center;
+    font-size: 0;
+}
+.d2 .nav_main a{
+    margin: 0 20px;
+    font-size: 18px;
+    display: inline-block;
+    /* 这和下面的两个display挺有意思的 */
+    position: relative;
+}
+.d2 .nav_main a::after{
+    content: "";
+    display: block;
+    width: 100%;
+    margin-top: 2px;
+    border-bottom:  2px solid #94070a;
+    transform: scaleX(0);
+    transition: all 0.2s ease-out 0s;
+}
+.d2 .nav_main a::before{
+    content: "";
+    display: block;
+    height: 26px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-left:  2px solid #94070a;
+    transform: scaleY(0);
+    transition: all 0.2s ease-out 0s;
+    transform-origin: center top;
+}
+.d2 .nav_main .hover::before, .d2 .nav_main .hover::after{
+    transform: none;
+}
+
+
+
+/* tools */
+.header2 .d2 .tools{
+    display: flex;
+    font-size: 16px;
+}
+.header2 .d2 .tools .a{
+    width: 34px;
+    height: 34px;
+    border: 1px solid #000;
+    border-radius: 100%;
+    margin-left: 20px;
+}
+.header2 .d2 .tools a{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 34px;
+}
+/* .header .tools .sc a{
+    font-size: 20px;
+    line-height: 34px;
+} */
+
+/***** 二级导航栏 nav_child ******/
+
+
+.nav_child .item{
+    width: 900px;
+    padding: 40px;
+    position: absolute;
+    top: 100%;
+    border-top: 2px solid #94070a;
+    background: #fff url(../img/png96.png) center bottom no-repeat;
+    background-size: contain;
+
+    display: flex;
+
+    opacity: 0;
+    visibility: hidden;
+}
+.nav_child .item.s{
+    opacity: 1;
+    visibility: visible;
+}
+
+.nav_child .item .l{
+    width: 45%;
+    display: flex;
+}
+.nav_child .item .l .pic{
+    width: 142px;
+}
+.nav_child .item .l .pic img{
+    width: 100%;
+}
+.nav_child .item .l .text{
+    color: #94070a;
+    font-size: 16px;
+    line-height: 2.2;
+    padding-left: 30px;
+    flex: 1;
+}
+.nav_child .item .r{
+    width: 55%;
+    font-size: 0;
+    /* 消除字体间默认间距 */
+}
+.nav_child .item .r a{
+    color: #000;
+    width: 33.33%;
+    font-size: 18px;
+    display: inline-block;
+    margin-top: 10px;
+}
+/****************  header E  ********************/
 
 
 /***********************  scroll部分 ************************/
-/* body_b */
+
+.scroll{
+
+}
